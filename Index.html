@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nima × Pragya — 2 Years of Us</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#050505;
+  color:#fff;
+  font-family:Georgia, "Times New Roman", serif;
+  overflow-x:hidden;
+}
+
+section{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1.2s ease;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* INTRO */
+
+.intro{
+  background:
+  radial-gradient(circle at center, #211010 0%, #080808 45%, #000 100%);
+  text-align:center;
+}
+
+.particles{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+
+.particles span{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  opacity:.5;
+  animation:float 8s linear infinite;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(100vh);
+    opacity:0;
+  }
+  30%{opacity:.7;}
+  to{
+    transform:translateY(-10vh);
+    opacity:0;
+  }
+}
+
+.intro-content{
+  position:relative;
+  z-index:2;
+  padding:25px;
+}
+
+.date{
+  letter-spacing:6px;
+  font-size:14px;
+  color:#aaa;
+  margin-bottom:25px;
+}
+
+.intro h1{
+  font-size:clamp(45px,13vw,110px);
+  letter-spacing:5px;
+  font-weight:normal;
+}
+
+.heart{
+  color:#d7193f;
+}
+
+.subtitle{
+  margin-top:25px;
+  color:#aaa;
+  font-style:italic;
+  font-size:18px;
+}
+
+.scroll{
+  position:absolute;
+  bottom:30px;
+  font-size:11px;
+  letter-spacing:4px;
+  color:#777;
+}
+
+/* YEARS */
+
+.years{
+  background:linear-gradient(#050505,#120707,#050505);
+  text-align:center;
+}
+
+.years-content{
+  width:90%;
+  max-width:900px;
+}
+
+.small-title{
+  text-transform:uppercase;
+  letter-spacing:6px;
+  font-size:12px;
+  color:#888;
+  margin-bottom:35px;
+}
+
+.counter{
+  font-size:clamp(55px,15vw,140px);
+  font-weight:bold;
+  letter-spacing:4px;
+  line-height:.9;
+}
+
+.units{
+  margin-top:25px;
+  color:#aaa;
+  font-size:13px;
+  letter-spacing:2px;
+  line-height:2;
+}
+
+.years-text{
+  margin-top:45px;
+  font-size:20px;
+  font-style:italic;
+  color:#ccc;
+}
+
+/* STORY */
+
+.story{
+  background:#080808;
+  text-align:center;
+}
+
+.story-content{
+  width:90%;
+  max-width:850px;
+}
+
+.year{
+  font-size:clamp(70px,20vw,180px);
+  color:#181818;
+  font-weight:bold;
+  position:absolute;
+  z-index:0;
+}
+
+.story-box{
+  position:relative;
+  z-index:2;
+}
+
+.story-box h2{
+  font-size:38px;
+  margin-bottom:25px;
+}
+
+.story-box p{
+  color:#bbb;
+  font-size:18px;
+  line-height:1.9;
+}
+
+/* DISTANCE */
+
+.distance{
+  background:
+  radial-gradient(circle at center,#160909,#030303 70%);
+  text-align:center;
+}
+
+.map{
+  position:absolute;
+  inset:0;
+  opacity:.18;
+  background:
+    radial-gradient(ellipse at 20% 50%,transparent 0 13%,#aaa 13.2% 13.5%,transparent 14%),
+    radial-gradient(ellipse at 80% 50%,transparent 0 13%,#aaa 13.2% 13.5%,transparent 14%);
+}
+
+.route{
+  position:absolute;
+  width:70%;
+  height:2px;
+  background:#d7193f;
+  box-shadow:0 0 20px #d7193f;
+  transform:rotate(-5deg);
+}
+
+.distance-content{
+  position:relative;
+  z-index:2;
+}
+
+.distance h2{
+  font-size:clamp(40px,10vw,80px);
+  margin-bottom:20px;
+}
+
+.distance p{
+  color:#aaa;
+  font-size:20px;
+  font-style:italic;
+}
+
+/* MEMORIES */
+
+.memories{
+  display:block;
+  padding:100px 20px;
+  min-height:100vh;
+  background:#070707;
+}
+
+.memory-title{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.memory-title h2{
+  font-size:clamp(40px,10vw,75px);
+}
+
+.memory-title p{
+  color:#777;
+  margin-top:15px;
+}
+
+.gallery{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.photo{
+  height:270px;
+  background:linear-gradient(135deg,#222,#080808);
+  border:1px solid #222;
+  overflow:hidden;
+  position:relative;
+  transition:.5s;
+}
+
+.photo:hover{
+  transform:scale(1.03) rotate(.5deg);
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.photo span{
+  position:absolute;
+  bottom:12px;
+  left:12px;
+  font-size:11px;
+  letter-spacing:2px;
+  background:rgba(0,0,0,.65);
+  padding:8px 10px;
+}
+
+/* MOVIE */
+
+.movie{
+  background:#020202;
+  text-align:center;
+}
+
+.movie-content{
+  width:90%;
+  max-width:800px;
+}
+
+.movie h2{
+  font-size:clamp(45px,12vw,90px);
+  margin-bottom:20px;
+}
+
+.movie p{
+  color:#888;
+  margin-bottom:40px;
+}
+
+.watch{
+  display:inline-block;
+  padding:18px 35px;
+  border:1px solid #555;
+  color:white;
+  text-decoration:none;
+  letter-spacing:3px;
+  transition:.4s;
+}
+
+.watch:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* LITTLE THINGS */
+
+.little{
+  background:linear-gradient(#090909,#120606);
+  text-align:center;
+  padding:80px 20px;
+  display:block;
+}
+
+.little-title{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.little-title h2{
+  font-size:clamp(40px,10vw,70px);
+}
+
+.cards{
+  max-width:900px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.card{
+  min-height:180px;
+  padding:30px;
+  background:#111;
+  border:1px solid #222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:.5s;
+}
+
+.card:hover{
+  background:#181818;
+  transform:translateY(-8px);
+}
+
+.card-content{
+  color:#aaa;
+  line-height:1.7;
+}
+
+.hidden-message{
+  display:none;
+  color:white;
+}
+
+/* LETTER */
+
+.letter{
+  background:
+  radial-gradient(circle at center,#180909,#030303 70%);
+  padding:80px 20px;
+}
+
+.letter-box{
+  max-width:750px;
+  text-align:center;
+}
+
+.letter-box h2{
+  font-size:clamp(45px,11vw,80px);
+  margin-bottom:40px;
+}
+
+.letter-text{
+  color:#bbb;
+  font-size:17px;
+  line-height:2;
+  text-align:left;
+  white-space:pre-line;
+}
+
+/* FINAL */
+
+.final{
+  background:#000;
+  text-align:center;
+}
+
+.final-content{
+  width:90%;
+}
+
+.final-small{
+  color:#777;
+  letter-spacing:5px;
+  font-size:12px;
+  margin-bottom:30px;
+}
+
+.question{
+  font-size:clamp(35px,9vw,75px);
+  margin-bottom:45px;
+}
+
+.answer{
+  font-size:clamp(60px,18vw,150px);
+  color:#d7193f;
+  font-weight:bold;
+  opacity:0;
+  transform:scale(.5);
+  transition:1.5s ease;
+}
+
+.answer.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+.final-line{
+  margin-top:50px;
+  font-size:21px;
+  color:#aaa;
+  font-style:italic;
+  line-height:1.8;
+}
+
+.names{
+  margin-top:70px;
+  font-size:clamp(35px,9vw,70px);
+  letter-spacing:5px;
+}
+
+.anniversary{
+  margin-top:20px;
+  color:#777;
+  letter-spacing:4px;
+  font-size:12px;
+}
+
+.music{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:999;
+}
+
+.music button{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:1px solid #555;
+  background:#111;
+  color:white;
+  font-size:18px;
+}
+
+@media(max-width:600px){
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .photo{
+    height:330px;
+  }
+
+  .letter-text{
+    font-size:16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<div class="music">
+  <button onclick="toggleMusic()">♪</button>
+  <audio id="music" loop>
+    <source src="tadha-tadha.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<!-- 01 INTRO -->
+<section class="intro">
+  <div class="particles" id="particles"></div>
+
+  <div class="intro-content fade">
+    <div class="date">18.09.2024</div>
+
+    <h1>NIMA <span class="heart">♥</span> PRAGYA</h1>
+
+    <div class="subtitle">
+      The day our story began…
+    </div>
+  </div>
+
+  <div class="scroll">SCROLL TO BEGIN</div>
+</section>
+
+<!-- 02 YEARS -->
+<section class="years">
+  <div class="years-content fade">
+
+    <div class="small-title">02 — TWO YEARS OF US</div>
+
+    <div class="counter" id="days">730</div>
+
+    <div class="units">
+      DAYS<br>
+      <span id="hours">17,520</span> HOURS<br>
+      <span id="minutes">1,051,200</span> MINUTES
+    </div>
+
+    <div class="years-text">
+      and somehow, every moment led us here.
+    </div>
+
+  </div>
+</section>
+
+<!-- 03 STORY -->
+<section class="story">
+  <div class="year">2024</div>
+
+  <div class="story-content fade">
+    <div class="small-title">03 — OUR STORY</div>
+
+    <div class="story-box">
+      <h2>It all started here.</h2>
+
+      <p>
+        18 September 2024.<br><br>
+        Two people. One beginning.
+        And a story neither of us knew would become
+        such a beautiful part of our lives.
+        <br><br>
+        This is where our story began…
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="year">2025</div>
+
+  <div class="story-content fade">
+
+    <div class="story-box">
+      <h2>We grew together.</h2>
+
+      <p>
+        Through the good days, difficult days,
+        laughter, silence, memories and countless
+        little moments…
+        <br><br>
+        Somehow, we kept choosing each other.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="year">2026</div>
+
+  <div class="story-content fade">
+
+    <div class="story-box">
+      <h2>And here we are.</h2>
+
+      <p>
+        Two years later,
+        looking back at everything we have lived,
+        remembered and felt.
+        <br><br>
+        This website is just a small piece
+        of our story.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- 04 DISTANCE -->
+<section class="distance">
+
+  <div class="map"></div>
+  <div class="route"></div>
+
+  <div class="distance-content fade">
+
+    <div class="small-title">04 — DISTANCE</div>
+
+    <h2>🇳🇵 → 🇦🇺</h2>
+
+    <p>
+      Miles apart.<br>
+      Still close to my heart.
+    </p>
+
+  </div>
+</section>
+
+<!-- 05 MEMORY WALL -->
+<section class="memories">
+
+  <div class="memory-title fade">
+    <div class="small-title">05 — MEMORY WALL</div>
+    <h2>Our Memories</h2>
+    <p>A collection of moments I'll always keep.</p>
+  </div>
+
+  <div class="gallery">
+
+    <div class="photo">
+      <img src="photo1.jpg" alt="Our memory">
+      <span>MEMORY 01</span>
+    </div>
+
+    <div class="photo">
+      <img src="photo2.jpg" alt="Our memory">
+      <span>MEMORY 02</span>
+    </div>
+
+    <div class="photo">
+      <img src="photo3.jpg" alt="Our memory">
+      <span>MEMORY 03</span>
+    </div>
+
+    <div class="photo">
+      <img src="photo4.jpg" alt="Our memory">
+      <span>MEMORY 04</span>
+    </div>
+
+    <div class="photo">
+      <img src="photo5.jpg" alt="Our memory">
+      <span>MEMORY 05</span>
+    </div>
+
+    <div class="photo">
+      <img src="photo6.jpg" alt="Our memory">
+      <span>MEMORY 06</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- 06 MOVIE -->
+<section class="movie">
+
+  <div class="movie-content fade">
+
+    <div class="small-title">06 — OUR MOVIE</div>
+
+    <h2>Our Story 🎥</h2>
+
+    <p>
+      Every memory. Every smile. Every moment.
+      One little movie about us.
+    </p>
+
+    <a class="watch" href="our-movie.mp4" target="_blank">
+      ▶ WATCH OUR STORY
+    </a>
+
+  </div>
+</section>
+
+<!-- 07 LITTLE THINGS -->
+<section class="little">
+
+  <div class="little-title fade">
+    <div class="small-title">07 — LITTLE THINGS</div>
+    <h2>Things I Still Remember ❤️</h2>
+  </div>
+
+  <div class="cards">
+
+    <div class="card" onclick="reveal(this)">
+      <div class="card-content">
+        Something I still remember…
+        <div class="hidden-message">
+          The little moments with you that somehow became my favourite memories.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="reveal(this)">
+      <div class="card-content">
+        One thing I never forgot…
+        <div class="hidden-message">
+          The way even ordinary days felt special when you were part of them.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="reveal(this)">
+      <div class="card-content">
+        A memory close to my heart…
+        <div class="hidden-message">
+          There are moments I could replay forever.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="reveal(this)">
+      <div class="card-content">
+        And something I'll always choose…
+        <div class="hidden-message">
+          Our story. ❤️
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 08 LETTER -->
+<section class="letter">
+
+  <div class="letter-box fade">
+
+    <div class="small-title">08 — YOUR LETTER</div>
+
+    <h2>For You, Pragya 💌</h2>
+
+    <div class="letter-text">
+My love,
+
+Two years.
+
+It feels impossible to explain everything
+we have lived through in just a few words.
+
+From the day our story began on
+18 September 2024,
+so many things have changed,
+but one thing remains —
+the memories we created together.
+
+There were beautiful days,
+difficult days,
+moments when we laughed,
+moments when we missed each other,
+and moments when distance felt harder than ever.
+
+But every moment became a part
+of our story.
+
+Thank you for being a part of these two years.
+
+If I could go back and experience
+our story again,
+I would still choose those moments.
+
+Happy 2nd Anniversary, Pragya. ❤️
+
+With love,
+Nima
+    </div>
+
+  </div>
+</section>
+
+<!-- 09 FINAL -->
+<section class="final">
+
+  <div class="final-content">
+
+    <div class="final-small">
+      BEFORE YOU LEAVE…
+    </div>
+
+    <div class="question">
+      One last question.
+      <br><br>
+      Would I do it all again?
+    </div>
+
+    <div class="answer" id="answer">
+      YES.
+    </div>
+
+    <div class="final-line">
+      If I had to go back to<br>
+      <strong>18 September 2024…</strong>
+      <br><br>
+      I'd still walk toward you. ❤️
+    </div>
+
+    <div class="names">
+      NIMA × PRAGYA
+    </div>
+
+    <div class="anniversary">
+      18.09.2024 — 18.09.2026
+      <br><br>
+      2 YEARS OF US
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+
+/* PARTICLES */
+
+const particleBox = document.getElementById("particles");
+
+for(let i=0;i<80;i++){
+  const p=document.createElement("span");
+
+  p.style.left=Math.random()*100+"%";
+  p.style.animationDelay=Math.random()*8+"s";
+  p.style.animationDuration=(5+Math.random()*8)+"s";
+
+  particleBox.appendChild(p);
+}
+
+
+/* SCROLL FADE */
+
+const observer = new IntersectionObserver(
+(entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},
+{threshold:.15}
+);
+
+document.querySelectorAll(".fade").forEach(el=>{
+  observer.observe(el);
+});
+
+
+/* ANNIVERSARY COUNT */
+
+const startDate = new Date("2024-09-18T00:00:00");
+const anniversaryDate = new Date("2026-09-18T00:00:00");
+
+function updateCount(){
+
+  const now = new Date();
+
+  let diff = now - startDate;
+
+  let days = Math.floor(diff / 86400000);
+  let hours = Math.floor(diff / 3600000);
+  let minutes = Math.floor(diff / 60000);
+
+  document.getElementById("days").innerText =
+    days.toLocaleString();
+
+  document.getElementById("hours").innerText =
+    hours.toLocaleString();
+
+  document.getElementById("minutes").innerText =
+    minutes.toLocaleString();
+}
+
+updateCount();
+setInterval(updateCount,60000);
+
+
+/* LITTLE THINGS */
+
+function reveal(card){
+
+  const hidden = card.querySelector(".hidden-message");
+
+  if(hidden.style.display === "block"){
+    hidden.style.display="none";
+  }else{
+    hidden.style.display="block";
+  }
+}
+
+
+/* FINAL YES ANIMATION */
+
+const finalSection=document.querySelector(".final");
+
+const finalObserver=new IntersectionObserver(
+(entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      document.getElementById("answer").classList.add("show");
+    }
+  });
+},
+{threshold:.5}
+);
+
+finalObserver.observe(finalSection);
+
+
+/* MUSIC */
+
+const music=document.getElementById("music");
+
+function toggleMusic(){
+
+  if(music.paused){
+    music.play();
+  }else{
+    music.pause();
+  }
+
+}
+
+</script>
+
+</body>
+</html>
